@@ -1,3 +1,3 @@
-FROM resin/armv7hf-debian:jessie
+FROM arm64v8/alpine
 
 COPY bin/ /usr/bin/
