@@ -1,5 +1,5 @@
 ORG=byuoitav
-NAME=arm64v8-alpine
+NAME=arm32v6-alpine
 BRANCH=latest
 
 UNAME=$(shell echo $(DOCKER_USERNAME))
@@ -11,8 +11,8 @@ DOCKER_LOGIN=$(DOCKER) login
 DOCKER_PUSH=$(DOCKER) push
 
 all: build deploy
-build:
-	./build.sh
+build: bin/resin-xbuild
+	go build -ldflags "-w -s" -o bin/resin-xbuild resin-xbuild.go
 	$(DOCKER_BUILD) -t $(ORG)/$(NAME):$(BRANCH) .
 
 deploy: 
