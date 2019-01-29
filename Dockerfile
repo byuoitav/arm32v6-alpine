@@ -5,7 +5,7 @@ COPY bin/ /usr/bin/
 
 RUN [ "cross-build-start" ]
 
-RUN apk update
-RUN apk add ca-certificates
+RUN apk --no-cache update
+RUN apk --no-cache add ca-certificates
 
 RUN [ "cross-build-end" ]
